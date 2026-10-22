@@ -1,24 +1,42 @@
 import { useState } from 'react'
 import { Send, Phone, Mail, Camera, Clock, DollarSign, ShieldCheck, CheckCircle2 } from 'lucide-react'
+import { PageIntro, Reveal } from '../components/UI'
+
+const API_URL = import.meta.env.VITE_API_URL || ''
 
 function Contact() {
-  const [form, setForm] = useState({ name: '', message: '' })
+  const [form, setForm] = useState({ name: '', contact: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Backend yo'q — hozircha faqat tasdiq xabari
-    setSubmitted(true)
-    setForm({ name: '', message: '' })
+    setSending(true)
+    setError('')
+    try {
+      const response = await fetch(`${API_URL}/api/order`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: form.name, contact: form.contact, service: 'other', description: form.message }),
+      })
+      const result = await response.json()
+      if (!response.ok || !result.ok) throw new Error(result.error || 'Xabar yuborilmadi')
+      setSubmitted(true)
+      setForm({ name: '', contact: '', message: '' })
+    } catch {
+      setError("Xabarni yuborib bo‘lmadi. Iltimos, keyinroq qayta urinib ko‘ring.")
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
-    <div className="py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-4 gradient-text">Biz bilan bog'laning</h1>
-        <p className="text-center text-base-content/60 mb-12 max-w-2xl mx-auto">
+    <div className="page-shell">
+      <div className="site-container">
+        <PageIntro eyebrow="Aloqa" title="Biz bilan bog‘laning">
           Savollaringiz bormi? Biz bilan qulay usulda bog'laning yoki xabar yuboring
-        </p>
+        </PageIntro>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
           {/* Contact Cards */}
@@ -53,12 +71,12 @@ function Contact() {
                 href: 'https://instagram.com/softcode_dev',
                 external: true,
               },
-            ].map((contact, i) => (
+            ].map((contact) => (
               <a
-                key={i}
+                key={contact.title}
                 href={contact.href}
                 {...(contact.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-                className="card bg-base-200 card-hover neon-border"
+                className="card card-hover contact-link"
               >
                 <div className="card-body flex-row items-center gap-4 py-4">
                   <div className="p-3 rounded-lg bg-primary/10">{contact.icon}</div>
@@ -90,7 +108,9 @@ function Contact() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="card bg-base-200 neon-border">
+            {error && <div role="alert" className="alert alert-error mb-4">{error}</div>}
+
+            <form onSubmit={handleSubmit} className="card">
               <div className="card-body space-y-4">
                 <div className="form-control">
                   <label className="label" htmlFor="contact-name">
@@ -99,6 +119,7 @@ function Contact() {
                   <input
                     id="contact-name"
                     type="text"
+                    maxLength={120}
                     placeholder="Ismingizni kiriting"
                     className="input input-bordered input-primary w-full"
                     value={form.name}
@@ -107,11 +128,16 @@ function Contact() {
                   />
                 </div>
                 <div className="form-control">
+                  <label className="label" htmlFor="contact-reply"><span className="label-text">Telefon yoki Telegram *</span></label>
+                  <input id="contact-reply" type="text" maxLength={120} placeholder="+998 90 123 45 67 yoki @username" className="input input-bordered input-primary w-full" value={form.contact} onChange={(e) => setForm({ ...form, contact: e.target.value })} required />
+                </div>
+                <div className="form-control">
                   <label className="label" htmlFor="contact-message">
                     <span className="label-text">Xabar *</span>
                   </label>
                   <textarea
                     id="contact-message"
+                    maxLength={3000}
                     placeholder="Xabaringizni yozing..."
                     className="textarea textarea-bordered textarea-primary w-full h-32"
                     value={form.message}
@@ -119,8 +145,8 @@ function Contact() {
                     required
                   />
                 </div>
-                <button type="submit" className="btn btn-primary w-full neon-border">
-                  <Send size={18} /> Yuborish
+                <button type="submit" disabled={sending} className="btn btn-primary w-full">
+                  <Send size={18} /> {sending ? 'Yuborilmoqda...' : 'Yuborish'}
                 </button>
               </div>
             </form>
@@ -147,14 +173,14 @@ function Contact() {
                 title: "1 oy bepul qo'llab-quvvatlash",
                 desc: "Loyiha topshirilgandan so'ng 1 oy davomida bepul texnik yordam beramiz.",
               },
-            ].map((item, i) => (
-              <div key={i} className="card bg-base-200 card-hover neon-border">
+            ].map((item) => (
+              <Reveal key={item.title} className="card card-hover">
                 <div className="card-body items-center text-center">
                   <div className="mb-2">{item.icon}</div>
                   <h3 className="card-title">{item.title}</h3>
                   <p className="text-base-content/70 text-sm">{item.desc}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

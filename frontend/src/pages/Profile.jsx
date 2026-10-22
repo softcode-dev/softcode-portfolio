@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, Send, Globe, Code2 } from 'lucide-react'
+import { Reveal } from '../components/UI'
 
 const membersData = {
   begzod: {
@@ -76,7 +77,7 @@ function Profile() {
 
   if (!member) {
     return (
-      <div className="py-20 text-center">
+      <div className="page-shell site-container text-center">
         <h1 className="text-3xl font-bold mb-4">Profil topilmadi</h1>
         <Link to="/jamoa" className="btn btn-primary">
           <ArrowLeft size={18} /> Jamoaga qaytish
@@ -86,8 +87,8 @@ function Profile() {
   }
 
   return (
-    <div className="py-16 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="page-shell">
+      <div className="site-container max-w-4xl">
         {/* Back button */}
         <Link to="/jamoa" className="btn btn-ghost btn-sm mb-8">
           <ArrowLeft size={18} /> Jamoaga qaytish
@@ -95,7 +96,7 @@ function Profile() {
 
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center gap-6 mb-12">
-          <div className={`w-32 h-32 rounded-full bg-gradient-to-br ${member.color} flex items-center justify-center text-5xl font-bold text-white shrink-0`}>
+          <div className="avatar-mark flex h-32 w-32 shrink-0 items-center justify-center rounded-full text-5xl font-bold">
             {member.initials}
           </div>
           <div className="text-center md:text-left">
@@ -105,15 +106,15 @@ function Profile() {
         </div>
 
         {/* Bio */}
-        <div className="card bg-base-200 neon-border mb-8">
+        <Reveal className="card mb-8">
           <div className="card-body">
             <h2 className="card-title text-primary">Bio</h2>
             <p className="text-base-content/80">{member.bio}</p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Skills */}
-        <div className="card bg-base-200 neon-border mb-8">
+        <Reveal className="card mb-8">
           <div className="card-body">
             <h2 className="card-title text-primary mb-4">Ko'nikmalar</h2>
             <div className="space-y-4">
@@ -128,10 +129,10 @@ function Profile() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Technologies */}
-        <div className="card bg-base-200 neon-border mb-8">
+        <Reveal className="card mb-8">
           <div className="card-body">
             <h2 className="card-title text-primary mb-4">Texnologiyalar</h2>
             <div className="flex flex-wrap gap-2">
@@ -140,18 +141,18 @@ function Profile() {
               ))}
             </div>
           </div>
-        </div>
+        </Reveal>
 
         {/* Role */}
-        <div className="card bg-base-200 neon-border mb-8">
+        <Reveal className="card mb-8">
           <div className="card-body">
             <h2 className="card-title text-primary">Jamoadagi vazifasi</h2>
             <p className="text-base-content/80">{member.role_desc}</p>
           </div>
-        </div>
+        </Reveal>
 
         {/* Projects */}
-        <div className="card bg-base-200 neon-border mb-8">
+        <Reveal className="card mb-8">
           <div className="card-body">
             <h2 className="card-title text-primary mb-4">Loyihalari</h2>
             <ul className="space-y-2">
@@ -163,10 +164,10 @@ function Profile() {
               ))}
             </ul>
           </div>
-        </div>
+        </Reveal>
 
         {/* Contact Links */}
-        <div className="card bg-base-200 neon-border">
+        <Reveal className="card">
           <div className="card-body">
             <h2 className="card-title text-primary mb-4">Aloqa</h2>
             <div className="flex flex-wrap gap-3">
@@ -187,7 +188,7 @@ function Profile() {
               )}
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </div>
   )

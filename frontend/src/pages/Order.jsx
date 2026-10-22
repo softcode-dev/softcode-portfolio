@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Send, CheckCircle2 } from 'lucide-react'
+import { PageIntro } from '../components/UI'
 
 const API_URL = import.meta.env.VITE_API_URL || ''
 
@@ -36,7 +37,7 @@ function Order() {
       }
       setSubmitted(true)
       setForm({ name: '', contact: '', service: '', description: '', budget: '', deadline: '' })
-    } catch (err) {
+    } catch {
       setError("Buyurtmani yuborib bo'lmadi. Iltimos, keyinroq qayta urinib ko'ring.")
     } finally {
       setSending(false)
@@ -44,29 +45,28 @@ function Order() {
   }
 
   return (
-    <div className="py-16 px-4">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-4 gradient-text">Buyurtma berish</h1>
-        <p className="text-center text-base-content/60 mb-10">
+    <div className="page-shell">
+      <div className="site-container max-w-2xl">
+        <PageIntro eyebrow="Loyihani boshlash" title="Buyurtma berish">
           Loyihangiz haqida ma'lumot bering — biz tez orada aloqaga chiqamiz
-        </p>
+        </PageIntro>
 
         {submitted && (
           <div role="alert" className="alert alert-success mb-8">
             <CheckCircle2 size={20} />
             <span>Buyurtmangiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.</span>
-            <button className="btn btn-ghost btn-sm" onClick={() => setSubmitted(false)}>×</button>
+            <button type="button" aria-label="Xabarni yopish" className="btn btn-ghost btn-sm" onClick={() => setSubmitted(false)}>×</button>
           </div>
         )}
 
         {error && (
           <div role="alert" className="alert alert-error mb-8">
             <span>{error}</span>
-            <button className="btn btn-ghost btn-sm" onClick={() => setError('')}>×</button>
+            <button type="button" aria-label="Xatoni yopish" className="btn btn-ghost btn-sm" onClick={() => setError('')}>×</button>
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="card bg-base-200 neon-border">
+        <form onSubmit={handleSubmit} className="card">
           <div className="card-body space-y-4">
             {/* Ism */}
             <div className="form-control">
@@ -77,6 +77,7 @@ function Order() {
                 id="order-name"
                 type="text"
                 name="name"
+                maxLength={120}
                 placeholder="To'liq ismingiz"
                 className="input input-bordered input-primary w-full"
                 value={form.name}
@@ -94,6 +95,7 @@ function Order() {
                 id="order-contact"
                 type="text"
                 name="contact"
+                maxLength={120}
                 placeholder="+998 90 123 45 67 yoki @username"
                 className="input input-bordered input-primary w-full"
                 value={form.contact}
@@ -132,6 +134,7 @@ function Order() {
               <textarea
                 id="order-description"
                 name="description"
+                maxLength={3000}
                 placeholder="Loyihangiz haqida batafsil yozing..."
                 className="textarea textarea-bordered textarea-primary w-full h-32"
                 value={form.description}

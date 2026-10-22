@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import { PageIntro, Reveal } from '../components/UI'
 
 const members = [
   {
@@ -30,19 +31,18 @@ const members = [
 
 function Team() {
   return (
-    <div className="py-16 px-4">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-4 gradient-text">Bizning jamoa</h1>
-        <p className="text-center text-base-content/60 mb-12 max-w-2xl mx-auto">
+    <div className="page-shell">
+      <div className="site-container max-w-5xl">
+        <PageIntro eyebrow="Biz haqimizda" title="Bizning jamoa">
           Professional va tajribali dasturchilar jamoasi bilan tanishing
-        </p>
+        </PageIntro>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {members.map((member) => (
-            <div key={member.id} className="card bg-base-200 card-hover neon-border">
+            <Reveal key={member.id} className="card card-hover">
               <div className="card-body items-center text-center">
                 {/* Avatar placeholder */}
-                <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${member.color} flex items-center justify-center text-3xl font-bold text-white mb-4`}>
+                <div className="avatar-mark mb-4 flex h-24 w-24 items-center justify-center rounded-full text-3xl font-bold">
                   {member.initials}
                 </div>
                 <h2 className="card-title text-xl">{member.name}</h2>
@@ -58,7 +58,7 @@ function Team() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

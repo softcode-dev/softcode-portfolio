@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { PageIntro, Reveal } from '../components/UI'
 import {
   Globe, Bot, Layout, BrainCircuit, HeadphonesIcon, CheckCircle2, Clock, DollarSign
 } from 'lucide-react'
@@ -78,20 +79,19 @@ const services = [
 
 function Services() {
   return (
-    <div className="py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-4 gradient-text">Xizmatlarimiz</h1>
-        <p className="text-center text-base-content/60 mb-12 max-w-2xl mx-auto">
+    <div className="page-shell">
+      <div className="site-container">
+        <PageIntro eyebrow="Xizmatlar" title="Xizmatlarimiz">
           Zamonaviy texnologiyalar yordamida biznesingizni raqamlashtiring.
           Har bir loyiha individual yondashuv bilan ishlab chiqiladi.
-        </p>
+        </PageIntro>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {services.map((service, i) => (
-            <div key={i} className="card bg-base-200 neon-border card-hover">
+          {services.map((service) => (
+            <Reveal key={service.title} className="card card-hover">
               <div className="card-body">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="animate-float">{service.icon}</div>
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#2299e8]/10 [&_svg]:h-7 [&_svg]:w-7">{service.icon}</div>
                   <h2 className="card-title text-2xl">{service.title}</h2>
                 </div>
                 <p className="text-base-content/70 mb-4">{service.desc}</p>
@@ -122,7 +122,7 @@ function Services() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

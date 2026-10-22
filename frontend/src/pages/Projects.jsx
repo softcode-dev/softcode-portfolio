@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Sparkles } from 'lucide-react'
+import { Bot, Globe, Smartphone } from 'lucide-react'
+import { PageIntro, Reveal } from '../components/UI'
 
 const projects = [
   {
@@ -62,21 +63,21 @@ function Projects() {
     : projects.filter((p) => p.category === activeTab)
 
   return (
-    <div className="py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-4 gradient-text">Loyihalarimiz</h1>
-        <p className="text-center text-base-content/60 mb-10 max-w-2xl mx-auto">
+    <div className="page-shell">
+      <div className="site-container">
+        <PageIntro eyebrow="Portfolio" title="Loyihalarimiz">
           Turli sohalarda amalga oshirilgan loyihalar bilan tanishing
-        </p>
+        </PageIntro>
 
         {/* Filter Tabs */}
-        <div className="flex justify-center mb-10">
-          <div role="tablist" className="tabs tabs-boxed bg-base-200">
+        <div className="mb-10 flex justify-center">
+          <div role="group" aria-label="Loyihalarni turiga ko‘ra saralash" className="flex max-w-full gap-1 overflow-x-auto rounded-xl border border-white/10 bg-[#101925] p-1.5">
             {tabs.map((tab) => (
               <button
                 key={tab}
-                role="tab"
-                className={`tab ${activeTab === tab ? 'tab-active' : ''}`}
+                type="button"
+                aria-pressed={activeTab === tab}
+                className={`shrink-0 rounded-lg px-3 py-2 text-sm font-medium transition-colors sm:px-5 ${activeTab === tab ? 'bg-[#2299e8] text-[#06111c]' : 'text-[#9baabd] hover:text-white'}`}
                 onClick={() => setActiveTab(tab)}
               >
                 {tab}
@@ -87,11 +88,11 @@ function Projects() {
 
         {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((project, i) => (
-            <div key={i} className="card bg-base-200 card-hover neon-border">
+          {filtered.map((project) => (
+            <Reveal key={project.title} className="card card-hover overflow-hidden">
               <figure>
-                <div className={`w-full h-44 bg-gradient-to-br ${project.color} flex items-center justify-center`}>
-                  <Sparkles size={48} className="text-white/40" />
+                <div className="project-cover flex h-44 w-full items-center justify-center text-[#2299e8]">
+                  {project.category === 'Bot' ? <Bot size={44} strokeWidth={1.5} /> : project.category === 'Mini App' ? <Smartphone size={44} strokeWidth={1.5} /> : <Globe size={44} strokeWidth={1.5} />}
                 </div>
               </figure>
               <div className="card-body">
@@ -108,7 +109,7 @@ function Projects() {
                   ))}
                 </div>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
 
