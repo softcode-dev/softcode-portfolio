@@ -1,89 +1,91 @@
 import { Link } from 'react-router-dom'
 import { PageIntro, Reveal } from '../components/UI'
+import { useLanguage } from '../i18n/LanguageContext'
 import {
   Globe, Bot, Layout, BrainCircuit, HeadphonesIcon, CheckCircle2, Clock, DollarSign
 } from 'lucide-react'
 
-const services = [
-  {
-    icon: <Globe size={40} className="text-primary" />,
-    title: 'Veb-saytlar',
-    desc: 'Zamonaviy, responsive va tezkor veb-saytlar. Landing page, korporativ sayt, onlayn do\'kon va boshqalar.',
-    features: [
-      'Responsive dizayn (mobil, planshet, kompyuter)',
-      'SEO optimizatsiya',
-      'Admin panel integratsiyasi',
-      'Tezkor yuklash (performance)',
-      'SSL sertifikat va hosting',
-    ],
-    duration: '1-3 hafta',
-    price: "2 000 000 so'm",
-  },
-  {
-    icon: <Bot size={40} className="text-primary" />,
-    title: 'Telegram botlar',
-    desc: 'Biznesingiz uchun avtomatlashtirilgan Telegram botlar. Buyurtma qabul qilish, CRM, to\'lov tizimi.',
-    features: [
-      'Inline va reply rejimlar',
-      'Admin panel',
-      'To\'lov tizimlari integratsiyasi (Click, Payme)',
-      'Foydalanuvchi bazasi va statistika',
-      'Webhook va polling rejimlar',
-    ],
-    duration: '1-2 hafta',
-    price: "1 500 000 so'm",
-  },
-  {
-    icon: <Layout size={40} className="text-primary" />,
-    title: 'Admin panel / CRM',
-    desc: 'Biznesingizni boshqarish uchun qulay admin panel va CRM tizimlar. Real-time statistika va hisobotlar.',
-    features: [
-      'Dashboard va statistika',
-      'Foydalanuvchilar boshqaruvi',
-      'Buyurtmalar va moliya hisoboti',
-      'Rollar va ruxsatlar tizimi',
-      'API integratsiya',
-    ],
-    duration: '2-4 hafta',
-    price: "3 000 000 so'm",
-  },
-  {
-    icon: <BrainCircuit size={40} className="text-primary" />,
-    title: 'AI integratsiya',
-    desc: "Sun'iy intellekt yechimlarini loyihangizga qo'shish. Chatbotlar, matn tahlili, tavsiya tizimlari.",
-    features: [
-      'OpenAI / GPT integratsiya',
-      'Natural Language Processing',
-      'Chatbot va virtual assistent',
-      'Ma\'lumotlar tahlili va bashorat',
-      'Ovozli buyruqlar',
-    ],
-    duration: '2-6 hafta',
-    price: "5 000 000 so'm",
-  },
-  {
-    icon: <HeadphonesIcon size={40} className="text-primary" />,
-    title: "Qo'llab-quvvatlash",
-    desc: "Loyiha topshirilgandan keyin texnik qo'llab-quvvatlash, yangilanishlar va xatoliklarni tuzatish.",
-    features: [
-      'Bug fix va xatoliklarni tuzatish',
-      'Yangi funksiyalar qo\'shish',
-      'Server monitoring',
-      'Zaxira nusxa (backup)',
-      '24/7 aloqa',
-    ],
-    duration: 'Kelishiladi',
-    price: "500 000 so'm / oy",
-  },
-]
-
 function Services() {
+  const { t } = useLanguage()
+
+  const services = [
+    {
+      icon: <Globe size={40} className="text-primary" />,
+      title: t('services.s1Title'),
+      desc: t('services.s1Desc'),
+      features: [
+        t('services.s1f1'),
+        t('services.s1f2'),
+        t('services.s1f3'),
+        t('services.s1f4'),
+        t('services.s1f5'),
+      ],
+      duration: t('services.s1Duration'),
+      price: t('services.s1Price'),
+    },
+    {
+      icon: <Bot size={40} className="text-primary" />,
+      title: t('services.s2Title'),
+      desc: t('services.s2Desc'),
+      features: [
+        t('services.s2f1'),
+        t('services.s2f2'),
+        t('services.s2f3'),
+        t('services.s2f4'),
+        t('services.s2f5'),
+      ],
+      duration: t('services.s2Duration'),
+      price: t('services.s2Price'),
+    },
+    {
+      icon: <Layout size={40} className="text-primary" />,
+      title: t('services.s3Title'),
+      desc: t('services.s3Desc'),
+      features: [
+        t('services.s3f1'),
+        t('services.s3f2'),
+        t('services.s3f3'),
+        t('services.s3f4'),
+        t('services.s3f5'),
+      ],
+      duration: t('services.s3Duration'),
+      price: t('services.s3Price'),
+    },
+    {
+      icon: <BrainCircuit size={40} className="text-primary" />,
+      title: t('services.s4Title'),
+      desc: t('services.s4Desc'),
+      features: [
+        t('services.s4f1'),
+        t('services.s4f2'),
+        t('services.s4f3'),
+        t('services.s4f4'),
+        t('services.s4f5'),
+      ],
+      duration: t('services.s4Duration'),
+      price: t('services.s4Price'),
+    },
+    {
+      icon: <HeadphonesIcon size={40} className="text-primary" />,
+      title: t('services.s5Title'),
+      desc: t('services.s5Desc'),
+      features: [
+        t('services.s5f1'),
+        t('services.s5f2'),
+        t('services.s5f3'),
+        t('services.s5f4'),
+        t('services.s5f5'),
+      ],
+      duration: t('services.s5Duration'),
+      price: t('services.s5Price'),
+    },
+  ]
+
   return (
     <div className="page-shell">
       <div className="site-container">
-        <PageIntro eyebrow="Xizmatlar" title="Xizmatlarimiz">
-          Zamonaviy texnologiyalar yordamida biznesingizni raqamlashtiring.
-          Har bir loyiha individual yondashuv bilan ishlab chiqiladi.
+        <PageIntro eyebrow={t('services.eyebrow')} title={t('services.title')}>
+          {t('services.intro')}
         </PageIntro>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -91,7 +93,7 @@ function Services() {
             <Reveal key={service.title} className="card card-hover">
               <div className="card-body">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#2299e8]/10 [&_svg]:h-7 [&_svg]:w-7">{service.icon}</div>
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 [&_svg]:h-7 [&_svg]:w-7">{service.icon}</div>
                   <h2 className="card-title text-2xl">{service.title}</h2>
                 </div>
                 <p className="text-base-content/70 mb-4">{service.desc}</p>
@@ -108,17 +110,17 @@ function Services() {
                 <div className="flex flex-wrap gap-4 mb-4 text-sm">
                   <div className="flex items-center gap-1 text-base-content/60">
                     <Clock size={16} className="text-primary" />
-                    <span>Muddat: <strong className="text-base-content">{service.duration} dan</strong></span>
+                    <span>{t('services.durationLabel')} <strong className="text-base-content">{service.duration} {t('services.durationSuffix')}</strong></span>
                   </div>
                   <div className="flex items-center gap-1 text-base-content/60">
                     <DollarSign size={16} className="text-primary" />
-                    <span>Narx: <strong className="text-base-content">{service.price} dan</strong></span>
+                    <span>{t('services.priceLabel')} <strong className="text-base-content">{service.price} {t('services.priceSuffix')}</strong></span>
                   </div>
                 </div>
 
                 <div className="card-actions justify-end">
                   <Link to="/buyurtma" className="btn btn-primary">
-                    Buyurtma berish
+                    {t('services.orderButton')}
                   </Link>
                 </div>
               </div>

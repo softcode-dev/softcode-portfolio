@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { Send, CheckCircle2 } from 'lucide-react'
 import { PageIntro } from '../components/UI'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const API_URL = import.meta.env.VITE_API_URL || ''
 
 function Order() {
+  const { t } = useLanguage()
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
   const [error, setError] = useState('')
@@ -33,12 +35,12 @@ function Order() {
       })
       const data = await res.json()
       if (!res.ok || !data.ok) {
-        throw new Error(data.error || 'Yuborishda xatolik')
+        throw new Error(data.error || t('order.errorMessage'))
       }
       setSubmitted(true)
       setForm({ name: '', contact: '', service: '', description: '', budget: '', deadline: '' })
     } catch {
-      setError("Buyurtmani yuborib bo'lmadi. Iltimos, keyinroq qayta urinib ko'ring.")
+      setError(t('order.errorMessage'))
     } finally {
       setSending(false)
     }
@@ -47,22 +49,22 @@ function Order() {
   return (
     <div className="page-shell">
       <div className="site-container max-w-2xl">
-        <PageIntro eyebrow="Loyihani boshlash" title="Buyurtma berish">
-          Loyihangiz haqida ma'lumot bering — biz tez orada aloqaga chiqamiz
+        <PageIntro eyebrow={t('order.eyebrow')} title={t('order.title')}>
+          {t('order.intro')}
         </PageIntro>
 
         {submitted && (
           <div role="alert" className="alert alert-success mb-8">
             <CheckCircle2 size={20} />
-            <span>Buyurtmangiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.</span>
-            <button type="button" aria-label="Xabarni yopish" className="btn btn-ghost btn-sm" onClick={() => setSubmitted(false)}>×</button>
+            <span>{t('order.successMessage')}</span>
+            <button type="button" aria-label={t('order.closeAlert')} className="btn btn-ghost btn-sm" onClick={() => setSubmitted(false)}>×</button>
           </div>
         )}
 
         {error && (
           <div role="alert" className="alert alert-error mb-8">
             <span>{error}</span>
-            <button type="button" aria-label="Xatoni yopish" className="btn btn-ghost btn-sm" onClick={() => setError('')}>×</button>
+            <button type="button" aria-label={t('order.closeError')} className="btn btn-ghost btn-sm" onClick={() => setError('')}>×</button>
           </div>
         )}
 
@@ -71,14 +73,14 @@ function Order() {
             {/* Ism */}
             <div className="form-control">
               <label className="label" htmlFor="order-name">
-                <span className="label-text">Ismingiz *</span>
+                <span className="label-text">{t('order.nameLabel')}</span>
               </label>
               <input
                 id="order-name"
                 type="text"
                 name="name"
                 maxLength={120}
-                placeholder="To'liq ismingiz"
+                placeholder={t('order.namePlaceholder')}
                 className="input input-bordered input-primary w-full"
                 value={form.name}
                 onChange={handleChange}
@@ -89,14 +91,14 @@ function Order() {
             {/* Telefon/Telegram */}
             <div className="form-control">
               <label className="label" htmlFor="order-contact">
-                <span className="label-text">Telefon yoki Telegram *</span>
+                <span className="label-text">{t('order.contactLabel')}</span>
               </label>
               <input
                 id="order-contact"
                 type="text"
                 name="contact"
                 maxLength={120}
-                placeholder="+998 90 123 45 67 yoki @username"
+                placeholder={t('order.contactPlaceholder')}
                 className="input input-bordered input-primary w-full"
                 value={form.contact}
                 onChange={handleChange}
@@ -107,7 +109,7 @@ function Order() {
             {/* Xizmat turi */}
             <div className="form-control">
               <label className="label" htmlFor="order-service">
-                <span className="label-text">Xizmat turi *</span>
+                <span className="label-text">{t('order.serviceLabel')}</span>
               </label>
               <select
                 id="order-service"
@@ -117,25 +119,25 @@ function Order() {
                 onChange={handleChange}
                 required
               >
-                <option value="" disabled>Xizmat turini tanlang</option>
-                <option value="website">Veb-sayt</option>
-                <option value="bot">Telegram bot</option>
-                <option value="admin">Admin panel / CRM</option>
-                <option value="ai">AI integratsiya</option>
-                <option value="other">Boshqa</option>
+                <option value="" disabled>{t('order.servicePlaceholder')}</option>
+                <option value="website">{t('order.serviceWebsite')}</option>
+                <option value="bot">{t('order.serviceBot')}</option>
+                <option value="admin">{t('order.serviceAdmin')}</option>
+                <option value="ai">{t('order.serviceAI')}</option>
+                <option value="other">{t('order.serviceOther')}</option>
               </select>
             </div>
 
             {/* Loyiha tavsifi */}
             <div className="form-control">
               <label className="label" htmlFor="order-description">
-                <span className="label-text">Loyiha tavsifi *</span>
+                <span className="label-text">{t('order.descLabel')}</span>
               </label>
               <textarea
                 id="order-description"
                 name="description"
                 maxLength={3000}
-                placeholder="Loyihangiz haqida batafsil yozing..."
+                placeholder={t('order.descPlaceholder')}
                 className="textarea textarea-bordered textarea-primary w-full h-32"
                 value={form.description}
                 onChange={handleChange}
@@ -146,7 +148,7 @@ function Order() {
             {/* Byudjet */}
             <div className="form-control">
               <label className="label" htmlFor="order-budget">
-                <span className="label-text">Byudjet oralig'i (ixtiyoriy)</span>
+                <span className="label-text">{t('order.budgetLabel')}</span>
               </label>
               <select
                 id="order-budget"
@@ -155,19 +157,19 @@ function Order() {
                 value={form.budget}
                 onChange={handleChange}
               >
-                <option value="">Tanlang (ixtiyoriy)</option>
-                <option value="1-3m">1 — 3 mln so'm</option>
-                <option value="3-5m">3 — 5 mln so'm</option>
-                <option value="5-10m">5 — 10 mln so'm</option>
-                <option value="10m+">10 mln so'm dan yuqori</option>
-                <option value="unknown">Aniq emas</option>
+                <option value="">{t('order.budgetPlaceholder')}</option>
+                <option value="1-3m">{t('order.budget1')}</option>
+                <option value="3-5m">{t('order.budget2')}</option>
+                <option value="5-10m">{t('order.budget3')}</option>
+                <option value="10m+">{t('order.budget4')}</option>
+                <option value="unknown">{t('order.budgetUnknown')}</option>
               </select>
             </div>
 
             {/* Muddat */}
             <div className="form-control">
               <label className="label" htmlFor="order-deadline">
-                <span className="label-text">Muddat (ixtiyoriy)</span>
+                <span className="label-text">{t('order.deadlineLabel')}</span>
               </label>
               <select
                 id="order-deadline"
@@ -176,25 +178,25 @@ function Order() {
                 value={form.deadline}
                 onChange={handleChange}
               >
-                <option value="">Tanlang (ixtiyoriy)</option>
-                <option value="1week">1 hafta ichida</option>
-                <option value="2weeks">2 hafta ichida</option>
-                <option value="1month">1 oy ichida</option>
-                <option value="2months">2 oy ichida</option>
-                <option value="flexible">Moslashuvchan</option>
+                <option value="">{t('order.deadlinePlaceholder')}</option>
+                <option value="1week">{t('order.deadline1w')}</option>
+                <option value="2weeks">{t('order.deadline2w')}</option>
+                <option value="1month">{t('order.deadline1m')}</option>
+                <option value="2months">{t('order.deadline2m')}</option>
+                <option value="flexible">{t('order.deadlineFlexible')}</option>
               </select>
             </div>
 
             {/* Submit */}
             <button
               type="submit"
-              className="btn btn-primary btn-lg w-full neon-border mt-2"
+              className="btn btn-primary btn-lg w-full mt-2"
               disabled={sending}
             >
               {sending ? (
-                <><span className="loading loading-spinner loading-sm" /> Yuborilmoqda...</>
+                <><span className="loading loading-spinner loading-sm" /> {t('order.submitting')}</>
               ) : (
-                <><Send size={20} /> Yuborish</>
+                <><Send size={20} /> {t('order.submitButton')}</>
               )}
             </button>
           </div>

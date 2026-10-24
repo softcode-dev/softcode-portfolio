@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { PageIntro, Reveal } from '../components/UI'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const members = [
   {
@@ -8,7 +9,6 @@ const members = [
     name: 'Begzod',
     role: 'Frontend Lead',
     initials: 'B',
-    color: 'from-blue-500 to-cyan-400',
     techs: ['React', 'TypeScript', 'Tailwind', 'Next.js'],
   },
   {
@@ -16,7 +16,6 @@ const members = [
     name: 'Sardor',
     role: 'Backend Developer',
     initials: 'S',
-    color: 'from-purple-500 to-pink-400',
     techs: ['Python', 'Node.js', 'PostgreSQL', 'FastAPI'],
   },
   {
@@ -24,17 +23,18 @@ const members = [
     name: 'Amir',
     role: 'Frontend Developer',
     initials: 'A',
-    color: 'from-green-500 to-emerald-400',
     techs: ['React', 'JavaScript', 'Tailwind', 'Figma'],
   },
 ]
 
 function Team() {
+  const { t } = useLanguage()
+
   return (
     <div className="page-shell">
       <div className="site-container max-w-5xl">
-        <PageIntro eyebrow="Biz haqimizda" title="Bizning jamoa">
-          Professional va tajribali dasturchilar jamoasi bilan tanishing
+        <PageIntro eyebrow={t('team.eyebrow')} title={t('team.title')}>
+          {t('team.intro')}
         </PageIntro>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -54,7 +54,7 @@ function Team() {
                 </div>
                 <div className="card-actions mt-4">
                   <Link to={`/profil/${member.id}`} className="btn btn-primary btn-sm btn-outline">
-                    Profilni ko'rish <ArrowRight size={16} />
+                    {t('team.viewProfile')} <ArrowRight size={16} />
                   </Link>
                 </div>
               </div>

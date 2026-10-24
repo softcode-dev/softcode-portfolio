@@ -1,27 +1,32 @@
 import { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Home } from 'lucide-react'
+import { useLanguage } from '../i18n/LanguageContext'
 
 export function NotFound() {
+  const { t } = useLanguage()
+
   return (
     <div className="page-shell site-container flex min-h-[65vh] flex-col items-center justify-center text-center">
-      <span className="eyebrow">404 / Sahifa topilmadi</span>
-      <h1 className="mt-5 text-5xl font-bold tracking-tight sm:text-6xl">Bu sahifa mavjud emas</h1>
-      <p className="section-copy mt-5 max-w-md">Manzilni tekshiring yoki bosh sahifaga qayting.</p>
-      <Link to="/" className="btn btn-primary mt-8"><Home size={18} /> Bosh sahifaga qaytish</Link>
+      <span className="eyebrow">{t('error.notFoundEyebrow')}</span>
+      <h1 className="mt-5 text-5xl font-bold tracking-tight sm:text-6xl text-base-content">{t('error.notFoundTitle')}</h1>
+      <p className="section-copy mt-5 max-w-md">{t('error.notFoundDesc')}</p>
+      <Link to="/" className="btn btn-primary mt-8"><Home size={18} /> {t('error.goHome')}</Link>
     </div>
   )
 }
 
 export function ServerError() {
+  const { t } = useLanguage()
+
   return (
     <div className="page-shell site-container flex min-h-[65vh] flex-col items-center justify-center text-center" role="alert">
-      <span className="eyebrow">500 / Xatolik</span>
-      <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">Sahifani ochib bo‘lmadi</h1>
-      <p className="section-copy mt-5 max-w-md">Vaqtinchalik xatolik yuz berdi. Sahifani yangilab ko‘ring yoki bosh sahifaga qayting.</p>
+      <span className="eyebrow">{t('error.serverEyebrow')}</span>
+      <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl text-base-content">{t('error.serverTitle')}</h1>
+      <p className="section-copy mt-5 max-w-md">{t('error.serverDesc')}</p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <button type="button" className="btn btn-primary" onClick={() => window.location.reload()}>Qayta urinish</button>
-        <Link to="/" className="btn btn-outline"><ArrowLeft size={18} /> Bosh sahifa</Link>
+        <button type="button" className="btn btn-primary" onClick={() => window.location.reload()}>{t('error.retry')}</button>
+        <Link to="/" className="btn btn-outline"><ArrowLeft size={18} /> {t('error.backHome')}</Link>
       </div>
     </div>
   )
