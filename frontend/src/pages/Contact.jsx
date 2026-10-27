@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Send, Phone, Mail, Camera, Clock, DollarSign, ShieldCheck, CheckCircle2 } from 'lucide-react'
+import { Send, Phone, Mail, Camera, Clock, DollarSign, ShieldCheck, CheckCircle2, ArrowUpRight } from 'lucide-react'
 import { PageIntro, Reveal } from '../components/UI'
 import { useLanguage } from '../i18n/LanguageContext'
 
@@ -34,7 +34,8 @@ function Contact() {
   }
 
   return (
-    <div className="page-shell">
+    <div className="page-shell contact-page">
+      <div className="contact-orbits" aria-hidden="true"><span /><span /><span /></div>
       <div className="site-container">
         <PageIntro eyebrow={t('contact.eyebrow')} title={t('contact.title')}>
           {t('contact.intro')}
@@ -42,7 +43,7 @@ function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
           {/* Contact Cards */}
-          <div className="space-y-4">
+          <div className="contact-channels order-2 lg:order-1">
             <h2 className="text-2xl font-bold mb-6">{t('contact.contactInfo')}</h2>
             {[
               {
@@ -73,12 +74,12 @@ function Contact() {
                 href: 'https://instagram.com/softcode_dev',
                 external: true,
               },
-            ].map((contact) => (
+            ].map((contact, index) => (
               <a
                 key={contact.title}
                 href={contact.href}
                 {...(contact.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-                className="card card-hover contact-link"
+                className={`card card-hover contact-link contact-channel ${index === 0 ? 'contact-channel-primary' : ''}`}
               >
                 <div className="card-body flex-row items-center gap-4 py-4">
                   <div className="p-3 rounded-lg bg-primary/10">{contact.icon}</div>
@@ -86,13 +87,14 @@ function Contact() {
                     <p className="text-sm text-base-content/60">{contact.title}</p>
                     <p className="font-semibold">{contact.value}</p>
                   </div>
+                  <ArrowUpRight size={20} className="contact-channel-arrow ml-auto shrink-0" aria-hidden="true" />
                 </div>
               </a>
             ))}
           </div>
 
           {/* Contact Form */}
-          <div>
+          <div className="contact-form-panel order-1 lg:order-2">
             <h2 className="text-2xl font-bold mb-6">{t('contact.sendMessage')}</h2>
 
             {submitted && (
@@ -112,7 +114,7 @@ function Contact() {
 
             {error && <div role="alert" className="alert alert-error mb-4">{error}</div>}
 
-            <form onSubmit={handleSubmit} className="card">
+            <form onSubmit={handleSubmit} className="card contact-form">
               <div className="card-body space-y-4">
                 <div className="form-control">
                   <label className="label" htmlFor="contact-name">
@@ -121,6 +123,7 @@ function Contact() {
                   <input
                     id="contact-name"
                     type="text"
+                    autoComplete="name"
                     maxLength={120}
                     placeholder={t('contact.namePlaceholder')}
                     className="input input-bordered input-primary w-full"
@@ -169,7 +172,7 @@ function Contact() {
         {/* Hamkorlik shartlari */}
         <div>
           <h2 className="text-3xl font-bold text-center mb-10 gradient-text">{t('contact.partnershipTitle')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="contact-partnership grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
               {
                 icon: <DollarSign size={36} className="text-primary" />,
@@ -188,10 +191,12 @@ function Contact() {
               },
             ].map((item) => (
               <Reveal key={item.title} className="card card-hover">
-                <div className="card-body items-center text-center">
-                  <div className="mb-2">{item.icon}</div>
-                  <h3 className="card-title">{item.title}</h3>
-                  <p className="text-base-content/70 text-sm">{item.desc}</p>
+                <div className="card-body flex-row items-start gap-4">
+                  <div className="contact-partner-icon shrink-0">{item.icon}</div>
+                  <div>
+                    <h3 className="card-title text-base mb-2">{item.title}</h3>
+                    <p className="text-base-content/70 text-sm leading-6">{item.desc}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}

@@ -6,7 +6,7 @@ function Footer() {
   const { t } = useLanguage()
 
   return (
-    <footer className="border-t border-base-300 bg-base-200/70 text-base-content transition-colors duration-200">
+    <footer className="relative z-10 border-t border-base-300 bg-base-200 text-base-content transition-colors duration-200">
       <div className="site-container grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
         <div>
           <Link to="/" className="flex items-center gap-2.5" aria-label={t('nav.homeAriaLabel')}>

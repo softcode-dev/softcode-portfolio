@@ -31,7 +31,7 @@ function Team() {
   const { t } = useLanguage()
 
   return (
-    <div className="page-shell">
+    <div className="page-shell team-page">
       <div className="site-container max-w-5xl">
         <PageIntro eyebrow={t('team.eyebrow')} title={t('team.title')}>
           {t('team.intro')}

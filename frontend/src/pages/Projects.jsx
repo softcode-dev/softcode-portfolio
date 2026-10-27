@@ -70,7 +70,7 @@ function Projects() {
     : projects.filter((p) => p.category === activeTab)
 
   return (
-    <div className="page-shell">
+    <div className="page-shell projects-page">
       <div className="site-container">
         <PageIntro eyebrow={t('projects.eyebrow')} title={t('projects.title')}>
           {t('projects.intro')}
