@@ -33,6 +33,8 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     const daisyTheme = theme === 'dark' ? DARK_THEME : LIGHT_THEME
     document.documentElement.setAttribute('data-theme', daisyTheme)
+    document.documentElement.classList.toggle('dark', theme === 'dark')
+    document.documentElement.classList.toggle('light', theme === 'light')
 
     // Update color-scheme
     document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light'

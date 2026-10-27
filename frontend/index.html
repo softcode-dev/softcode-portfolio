@@ -26,6 +26,20 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <title>SoftCode_dev — Veb, Bot va AI yechimlar</title>
+    <script>
+      (function() {
+        try {
+          const theme = localStorage.getItem('softcode-theme') || 'dark';
+          const daisy = theme === 'dark' ? 'night' : 'light';
+          document.documentElement.setAttribute('data-theme', daisy);
+          document.documentElement.classList.toggle('dark', theme === 'dark');
+          document.documentElement.classList.toggle('light', theme === 'light');
+          document.documentElement.style.colorScheme = theme;
+          const lang = localStorage.getItem('softcode-lang') || 'uz';
+          document.documentElement.lang = lang;
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -30,7 +30,7 @@ function Home() {
   return (
     <div>
       {/* Main visual */}
-      <section ref={heroRef} className="home-hero relative isolate overflow-hidden text-white">
+      <section ref={heroRef} className="home-hero relative isolate overflow-hidden">
         <div ref={imageRef} className="home-hero-image absolute inset-0" aria-hidden="true" />
         <div className="home-hero-shade absolute inset-0" aria-hidden="true" />
 
@@ -72,7 +72,7 @@ function Home() {
             ))}
           </div>
 
-          <div className="home-facts mt-12 grid w-full grid-cols-2 overflow-hidden rounded-2xl border border-white/15 bg-[#101925]/70 p-4 backdrop-blur-md sm:p-6 lg:mt-auto lg:grid-cols-4 lg:p-7">
+          <div className="home-facts mt-16 sm:mt-20 lg:mt-24 grid w-full grid-cols-2 overflow-hidden rounded-2xl border border-white/15 bg-[#101925]/70 p-4 backdrop-blur-md sm:p-6 lg:grid-cols-4 lg:p-7">
             {[
               { icon: MessageSquare, value: t('home.step1Value'), label: t('home.step1Label'), detail: t('home.step1Detail') },
               { icon: ClipboardList, value: t('home.step2Value'), label: t('home.step2Label'), detail: t('home.step2Detail') },
@@ -104,9 +104,9 @@ function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { id: 'begzod', name: 'Begzod', role: 'Frontend Lead', initials: 'B', techs: ['React', 'TypeScript', 'Tailwind'] },
-              { id: 'sardor', name: 'Sardor', role: 'Backend Developer', initials: 'S', techs: ['Python', 'Node.js', 'PostgreSQL'] },
-              { id: 'amir', name: 'Amir', role: 'Frontend Developer', initials: 'A', techs: ['React', 'JavaScript', 'Figma'] },
+              { id: 'begzod', name: 'Begzod', role: t('home.roleLead'), initials: 'B', techs: ['React', 'TypeScript', 'Tailwind'] },
+              { id: 'sardor', name: 'Sardor', role: t('home.roleBackend'), initials: 'S', techs: ['Python', 'Node.js', 'PostgreSQL'] },
+              { id: 'amir', name: 'Amir', role: t('home.roleFrontend'), initials: 'A', techs: ['React', 'JavaScript', 'Figma'] },
             ].map((member) => (
               <Reveal key={member.id} className="card card-hover">
                 <div className="card-body items-center text-center">

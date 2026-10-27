@@ -55,7 +55,9 @@ function Navbar() {
   }, [langDropdownOpen])
 
   const headerBgClass = isHome && !scrolled
-    ? '-mb-20 border-white/10 bg-[#080d15]/65 text-white'
+    ? isDark
+      ? '-mb-20 border-white/10 bg-[#080d15]/65 text-white'
+      : '-mb-20 border-slate-200/80 bg-white/75 text-slate-900 backdrop-blur-md shadow-xs'
     : 'border-base-300/80 bg-base-100/95 text-base-content backdrop-blur-md shadow-sm'
 
   return (
@@ -67,7 +69,7 @@ function Navbar() {
             <source srcSet="/header-logo-2.webp" type="image/webp" />
             <img src="/header-logo-2.png" alt="" width="46" height="46" className="h-11 w-11 object-contain" />
           </picture>
-          <span className={`whitespace-nowrap text-lg font-bold tracking-tight sm:text-xl ${isHome && !scrolled ? 'text-white' : 'text-base-content'}`}>
+          <span className={`whitespace-nowrap text-lg font-bold tracking-tight sm:text-xl ${isHome && !scrolled ? (isDark ? 'text-white' : 'text-slate-900') : 'text-base-content'}`}>
             Soft<span className="text-[#2299e8]">Code</span>_dev
           </span>
         </Link>
@@ -84,7 +86,9 @@ function Navbar() {
                   isActive
                     ? 'is-active text-primary font-semibold'
                     : isHome && !scrolled
-                    ? 'text-slate-200 hover:text-white'
+                    ? isDark
+                      ? 'text-slate-200 hover:text-white'
+                      : 'text-slate-700 hover:text-slate-950 font-medium'
                     : 'text-base-content/80 hover:text-base-content'
                 }`
               }
@@ -103,7 +107,9 @@ function Navbar() {
               onClick={() => setLangDropdownOpen((prev) => !prev)}
               className={`flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-semibold uppercase transition-colors ${
                 isHome && !scrolled
-                  ? 'border-white/20 bg-white/5 text-white hover:bg-white/10'
+                  ? isDark
+                    ? 'border-white/20 bg-white/5 text-white hover:bg-white/10'
+                    : 'border-slate-300/80 bg-white/80 text-slate-800 hover:bg-white shadow-xs'
                   : 'border-base-300 bg-base-200/80 text-base-content hover:bg-base-300'
               }`}
               aria-label="Tilni tanlash / Выбор языка / Select language"
@@ -143,7 +149,9 @@ function Navbar() {
             onClick={toggleTheme}
             className={`flex h-9 w-9 items-center justify-center rounded-lg border transition-transform hover:scale-105 active:scale-95 ${
               isHome && !scrolled
-                ? 'border-white/20 bg-white/5 text-white hover:bg-white/10'
+                ? isDark
+                  ? 'border-white/20 bg-white/5 text-white hover:bg-white/10'
+                  : 'border-slate-300/80 bg-white/80 text-slate-800 hover:bg-white shadow-xs'
                 : 'border-base-300 bg-base-200/80 text-base-content hover:bg-base-300'
             }`}
             aria-label={isDark ? t('theme.light') : t('theme.dark')}
@@ -173,7 +181,9 @@ function Navbar() {
             onClick={toggleTheme}
             className={`flex h-9 w-9 items-center justify-center rounded-lg border ${
               isHome && !scrolled
-                ? 'border-white/20 bg-white/5 text-white'
+                ? isDark
+                  ? 'border-white/20 bg-white/5 text-white'
+                  : 'border-slate-300/80 bg-white/80 text-slate-800'
                 : 'border-base-300 bg-base-200 text-base-content'
             }`}
             aria-label={isDark ? t('theme.light') : t('theme.dark')}
@@ -186,7 +196,9 @@ function Navbar() {
             type="button"
             className={`inline-flex h-9 w-9 items-center justify-center rounded-lg border ${
               isHome && !scrolled
-                ? 'border-white/20 text-white'
+                ? isDark
+                  ? 'border-white/20 text-white'
+                  : 'border-slate-300 text-slate-800 bg-white/80'
                 : 'border-base-300 text-base-content'
             }`}
             aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}
