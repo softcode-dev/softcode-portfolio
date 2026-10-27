@@ -28,7 +28,7 @@ function Home() {
   }, [])
 
   return (
-    <div>
+    <div className="home-page">
       {/* Main visual */}
       <section ref={heroRef} className="home-hero relative isolate overflow-hidden">
         <div ref={imageRef} className="home-hero-image absolute inset-0" aria-hidden="true" />
@@ -47,10 +47,10 @@ function Home() {
               {t('home.heroCopy')}
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link to="/buyurtma" className="home-cta-primary inline-flex min-h-14 items-center gap-4 rounded-full bg-white px-8 font-semibold text-slate-950 transition-transform hover:-translate-y-1">
+              <Link to="/buyurtma" className="home-cta-primary inline-flex min-h-14 items-center gap-4 rounded-full bg-white px-8 font-semibold text-slate-950">
                 {t('home.ctaStart')} <ArrowRight size={19} aria-hidden="true" />
               </Link>
-              <Link to="/xizmatlar" className="home-cta-secondary inline-flex min-h-14 items-center gap-3 rounded-full border border-white/45 bg-slate-950/25 px-8 font-medium text-white backdrop-blur-sm transition-colors hover:border-sky-400 hover:bg-sky-500/10">
+              <Link to="/xizmatlar" className="home-cta-secondary inline-flex min-h-14 items-center gap-3 rounded-full border border-white/45 bg-slate-950/25 px-8 font-medium text-white backdrop-blur-sm">
                 <Layers3 size={19} aria-hidden="true" /> {t('home.ctaServices')}
               </Link>
             </div>
@@ -95,7 +95,7 @@ function Home() {
       </section>
 
       {/* Jamoa */}
-      <section className="py-16 px-4">
+      <section className="home-team py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-4 gradient-text">{t('home.teamTitle')}</h2>
           <p className="text-center text-base-content/60 mb-12 max-w-2xl mx-auto">
@@ -134,7 +134,7 @@ function Home() {
       </section>
 
       {/* Service Preview Cards */}
-      <section className="py-16 px-4">
+      <section className="home-service-preview py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 gradient-text">{t('home.servicesTitle')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -172,49 +172,8 @@ function Home() {
         </div>
       </section>
 
-      {/* How We Work — Steps */}
-      <section className="py-16 px-4 bg-base-200/50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 gradient-text">{t('home.howWeWork')}</h2>
-          <ul className="steps steps-vertical lg:steps-horizontal w-full">
-            <li className="step step-primary" data-content="1">
-              <div className="text-left lg:text-center mt-2 lg:mt-4">
-                <div className="font-bold text-lg flex items-center gap-2">
-                  <MessageSquare size={20} className="text-primary" /> {t('home.step1Name')}
-                </div>
-                <p className="text-sm text-base-content/60">{t('home.step1Desc')}</p>
-              </div>
-            </li>
-            <li className="step step-primary" data-content="2">
-              <div className="text-left lg:text-center mt-2 lg:mt-4">
-                <div className="font-bold text-lg flex items-center gap-2">
-                  <ClipboardList size={20} className="text-primary" /> {t('home.step2Name')}
-                </div>
-                <p className="text-sm text-base-content/60">{t('home.step2Desc')}</p>
-              </div>
-            </li>
-            <li className="step step-primary" data-content="3">
-              <div className="text-left lg:text-center mt-2 lg:mt-4">
-                <div className="font-bold text-lg flex items-center gap-2">
-                  <Code2 size={20} className="text-primary" /> {t('home.step3Name')}
-                </div>
-                <p className="text-sm text-base-content/60">{t('home.step3Desc')}</p>
-              </div>
-            </li>
-            <li className="step step-primary" data-content="4">
-              <div className="text-left lg:text-center mt-2 lg:mt-4">
-                <div className="font-bold text-lg flex items-center gap-2">
-                  <Truck size={20} className="text-primary" /> {t('home.step4Name')}
-                </div>
-                <p className="text-sm text-base-content/60">{t('home.step4Desc')}</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-
       {/* Featured Projects */}
-      <section className="py-16 px-4">
+      <section className="home-projects py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 gradient-text">{t('home.featuredProjects')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -262,7 +221,7 @@ function Home() {
       </section>
 
       {/* Why Us */}
-      <section className="py-16 px-4 bg-base-200/50">
+      <section className="home-benefits py-16 px-4 bg-base-200/50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 gradient-text">{t('home.whyUs')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -285,7 +244,7 @@ function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 px-4">
+      <section className="home-faq py-16 px-4">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 gradient-text">{t('home.faqTitle')}</h2>
           <div className="space-y-3">
@@ -310,7 +269,7 @@ function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 px-4">
+      <section className="home-final-cta py-20 px-4">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">{t('home.ctaTitle')}</h2>
           <p className="text-base-content/70 mb-8 text-lg">

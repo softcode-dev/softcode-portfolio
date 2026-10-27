@@ -88,9 +88,9 @@ function Services() {
           {t('services.intro')}
         </PageIntro>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {services.map((service) => (
-            <Reveal key={service.title} className="card card-hover">
+            <Reveal key={service.title} className="card card-hover lg:col-span-2 lg:last:odd:col-start-2">
               <div className="card-body">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 [&_svg]:h-7 [&_svg]:w-7">{service.icon}</div>
