@@ -154,8 +154,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s cubic-bezier(.2,.7,.2,1); }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-.site-nav { transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease; }
-.site-nav.is-scrolled { background: var(--nav-bg); border-color: var(--brand-line); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+.site-nav { isolation: isolate; transition: background-color .5s ease, border-color .5s ease, box-shadow .5s ease; }
+.site-nav::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: var(--nav-bg); opacity: 0; transition: opacity .5s ease; }
+.site-nav.is-scrolled { border-color: var(--brand-line); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
+.site-nav.is-scrolled::before { opacity: 1; }
 .nav-link { position: relative; color: var(--color-base-content); opacity: .8; transition: color .2s ease, opacity .2s ease; }
 .nav-link:hover, .nav-link.is-active { opacity: 1; color: var(--color-base-content); }
 .nav-link::after { content: ''; position: absolute; left: .7rem; right: .7rem; bottom: -.6rem; height: 2px; background: var(--color-primary); opacity: 1; transform: scaleX(0); transform-origin: left; transition: transform .55s cubic-bezier(.2,.7,.2,1), opacity .25s ease; }

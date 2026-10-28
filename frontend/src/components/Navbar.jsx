@@ -54,15 +54,15 @@ function Navbar() {
     return () => document.removeEventListener('click', handleClickOutside)
   }, [langDropdownOpen])
 
-  const headerBgClass = isHome && !scrolled
+  const headerBgClass = isHome
     ? isDark
-      ? '-mb-20 border-white/10 bg-[#080d15]/65 text-white'
+      ? '-mb-20 border-white/10 bg-[#080d15]/65 text-white backdrop-blur-md'
       : '-mb-20 border-slate-200/80 bg-white/75 text-slate-900 backdrop-blur-md shadow-xs'
     : 'border-base-300/80 bg-base-100/95 text-base-content backdrop-blur-md shadow-sm'
 
   return (
     <header className={`site-nav sticky top-0 z-50 h-20 border-b transition-colors duration-200 ${headerBgClass} ${scrolled ? 'is-scrolled' : ''}`}>
-      <div className="site-container flex h-full items-center justify-between gap-3">
+      <div className="site-container relative flex h-full items-center justify-between gap-3">
         {/* Logo */}
         <Link to="/" className="flex shrink-0 items-center gap-2.5" aria-label={t('nav.homeAriaLabel')}>
           <picture>

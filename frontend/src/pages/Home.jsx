@@ -23,6 +23,7 @@ function Home() {
         imageRef.current.style.transform = `translate3d(0, ${distance * 0.08}px, 0) scale(1.04)`
       })
     }
+    update()
     window.addEventListener('scroll', update, { passive: true })
     return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', update) }
   }, [])
