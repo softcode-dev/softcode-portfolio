@@ -84,7 +84,6 @@ function Services() {
         t('services.s1f5'),
       ],
       duration: t('services.s1Duration'),
-      price: t('services.s1Price'),
     },
     {
       icon: <Bot size={40} className="text-primary" />,
@@ -98,7 +97,6 @@ function Services() {
         t('services.s2f5'),
       ],
       duration: t('services.s2Duration'),
-      price: t('services.s2Price'),
     },
     {
       icon: <Layout size={40} className="text-primary" />,
@@ -112,7 +110,6 @@ function Services() {
         t('services.s3f5'),
       ],
       duration: t('services.s3Duration'),
-      price: t('services.s3Price'),
     },
     {
       icon: <BrainCircuit size={40} className="text-primary" />,
@@ -126,7 +123,6 @@ function Services() {
         t('services.s4f5'),
       ],
       duration: t('services.s4Duration'),
-      price: t('services.s4Price'),
     },
     {
       icon: <HeadphonesIcon size={40} className="text-primary" />,
@@ -146,39 +142,41 @@ function Services() {
 
   function serviceContent(service, expanded = false) {
     return (
-              <div className="card-body">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 [&_svg]:h-7 [&_svg]:w-7">{service.icon}</div>
-                  <h2 id={expanded ? "service-dialog-title" : undefined} className="card-title text-2xl">{service.title}</h2>
-                </div>
-                <p className="text-base-content/70 mb-4">{service.desc}</p>
+      <div className="card-body">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 [&_svg]:h-7 [&_svg]:w-7">{service.icon}</div>
+          <h2 id={expanded ? "service-dialog-title" : undefined} className="card-title text-2xl">{service.title}</h2>
+        </div>
+        <p className="text-base-content/70 mb-4">{service.desc}</p>
 
-                <ul className="space-y-2 mb-6">
-                  {service.features.map((feature, j) => (
-                    <li key={j} className="flex items-center gap-2 text-sm">
-                      <CheckCircle2 size={16} className="text-success shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+        <ul className="space-y-2 mb-6">
+          {service.features.map((feature, j) => (
+            <li key={j} className="flex items-center gap-2 text-sm">
+              <CheckCircle2 size={16} className="text-success shrink-0" />
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
 
-                <div className="flex flex-wrap gap-4 mb-4 text-sm">
-                  <div className="flex items-center gap-1 text-base-content/60">
-                    <Clock size={16} className="text-primary" />
-                    <span>{t('services.durationLabel')} <strong className="text-base-content">{service.duration} {t('services.durationSuffix')}</strong></span>
-                  </div>
-                  <div className="flex items-center gap-1 text-base-content/60">
-                    <DollarSign size={16} className="text-primary" />
-                    <span>{t('services.priceLabel')} <strong className="text-base-content">{service.price} {t('services.priceSuffix')}</strong></span>
-                  </div>
-                </div>
+        <div className="flex flex-wrap gap-4 mb-4 text-sm">
+          <div className="flex items-center gap-1 text-base-content/60">
+            <Clock size={16} className="text-primary" />
+            <span>{t('services.durationLabel')} <strong className="text-base-content">{service.duration} {t('services.durationSuffix')}</strong></span>
+          </div>
+          {service.price && (
+            <div className="flex items-center gap-1 text-base-content/60">
+              <DollarSign size={16} className="text-primary" />
+              <span>{t('services.priceLabel')} <strong className="text-base-content">{service.price} {t('services.priceSuffix')}</strong></span>
+            </div>
+          )}
+        </div>
 
-                <div className="card-actions justify-end relative z-10">
-                  <Link to="/buyurtma" className="btn btn-primary">
-                    {t('services.orderButton')}
-                  </Link>
-                </div>
-              </div>
+        <div className="card-actions justify-end relative z-10">
+          <Link to="/buyurtma" className="btn btn-primary">
+            {t('services.orderButton')}
+          </Link>
+        </div>
+      </div>
     )
   }
 
@@ -201,9 +199,11 @@ function Services() {
                   <h2 className="text-xl font-semibold">{service.title}</h2>
                 </div>
                 <p className="line-clamp-2 text-sm leading-6 text-base-content/70">{service.desc}</p>
-                <div className="mt-auto border-t border-base-content/10 pt-4 text-sm font-semibold text-primary">
-                  {service.price} {t('services.priceSuffix')}
-                </div>
+                {service.price && (
+                  <div className="mt-auto border-t border-base-content/10 pt-4 text-sm font-semibold text-primary">
+                    {service.price} {t('services.priceSuffix')}
+                  </div>
+                )}
               </div>
               <button type="button" className="service-preview" onClick={(event) => openService(service, event)} aria-label={`${service.title} — ${t('home.moreDetails')}`} aria-haspopup="dialog">
                 <span className="service-preview-label"><Expand size={22} aria-hidden="true" /> {t('home.moreDetails')}</span>

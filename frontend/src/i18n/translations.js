@@ -124,16 +124,16 @@ export const translations = {
       why2Desc: 'Qisqa muddatlarda sifatli natija beramiz',
       why3Title: 'Sifatli kod',
       why3Desc: 'Zamonaviy standartlarga mos, toza kod',
-      why4Title: '24/7 yordam',
-      why4Desc: `Loyiha topshirilgandan keyin ham qo'llab-quvvatlash`,
+      why4Title: '07:00 — 22:00 yordam',
+      why4Desc: `Loyiha topshirilgandan keyin ham qo'llab-quvvatlash (ertalab 07:00 dan 22:00 gacha)`,
 
       faqTitle: `Ko'p so'raladigan savollar`,
       faq1Q: 'Loyiha qancha vaqt davom etadi?',
-      faq1A: `Loyihaning murakkabligiga qarab, oddiy veb-sayt 1-2 haftada, murakkab loyihalar 1-2 oyda tayyor bo'ladi.`,
+      faq1A: `Loyiha davomiyligi uning murakkabligi va belgilangan vazifalarga bog‘liq. Amalga oshirish jarayoni sifatli natijaga erishish uchun bosqichma-bosqich olib boriladi.`,
       faq2Q: `To'lov qanday amalga oshiriladi?`,
       faq2A: `Oldindan 30% to'lov, qolgan qismi loyiha topshirilgandan keyin. Bosqichma-bosqich to'lov ham mumkin.`,
       faq3Q: `Loyiha topshirilgandan keyin qo'llab-quvvatlash bormi?`,
-      faq3A: `Ha, har bir loyihaga 1 oy bepul texnik qo'llab-quvvatlash beramiz. Keyin kelishilgan narxda davom ettiramiz.`,
+      faq3A: `Ha, har bir loyihaga 1 oy bepul texnik qo'llab-quvvatlash (ertalab 07:00 dan 22:00 gacha) beramiz. Keyin kelishilgan narxda davom ettiramiz.`,
       faq4Q: 'Qaysi texnologiyalardan foydalanasizlar?',
       faq4A: 'React, Next.js, Node.js, Python, PostgreSQL, MongoDB, Aiogram, OpenAI va boshqa zamonaviy texnologiyalar.',
 
@@ -193,7 +193,7 @@ export const translations = {
       s5f2: `Yangi funksiyalar qo'shish`,
       s5f3: 'Server monitoring',
       s5f4: 'Zaxira nusxa (backup)',
-      s5f5: '24/7 aloqa',
+      s5f5: `07:00 dan 22:00 gacha aloqa`,
       s5Duration: 'Kelishiladi',
       s5Price: `500 000 so'm / oy`,
 
@@ -271,7 +271,7 @@ export const translations = {
       partner2Title: 'Muddat kelishiladi',
       partner2Desc: 'Loyiha muddati boshida kelishiladi va har bir bosqich alohida nazorat qilinadi.',
       partner3Title: `1 oy bepul qo'llab-quvvatlash`,
-      partner3Desc: `Loyiha topshirilgandan so'ng 1 oy davomida bepul texnik yordam beramiz.`,
+      partner3Desc: `Loyiha topshirilgandan so'ng 1 oy davomida bepul texnik yordam beramiz (ertalab 07:00 dan 22:00 gacha).`,
     },
 
     order: {
@@ -479,8 +479,8 @@ export const translations = {
       why2Desc: 'Качественный результат в короткие сроки',
       why3Title: 'Качественный код',
       why3Desc: 'Чистый код, соответствующий современным стандартам',
-      why4Title: 'Поддержка 24/7',
-      why4Desc: 'Поддержка даже после сдачи проекта',
+      why4Title: 'Поддержка 07:00 — 22:00',
+      why4Desc: 'Поддержка с 07:00 до 22:00 даже после сдачи проекта',
 
       faqTitle: 'Часто задаваемые вопросы',
       faq1Q: 'Сколько времени занимает проект?',
@@ -488,7 +488,7 @@ export const translations = {
       faq2Q: 'Как происходит оплата?',
       faq2A: 'Предоплата 30%, остаток — после сдачи проекта. Возможна поэтапная оплата.',
       faq3Q: 'Есть ли поддержка после сдачи проекта?',
-      faq3A: 'Да, каждый проект включает 1 месяц бесплатной технической поддержки. Далее — по согласованной стоимости.',
+      faq3A: 'Да, каждый проект включает 1 месяц бесплатной технической поддержки (с 07:00 до 22:00). Далее — по согласованной стоимости.',
       faq4Q: 'Какие технологии вы используете?',
       faq4A: 'React, Next.js, Node.js, Python, PostgreSQL, MongoDB, Aiogram, OpenAI и другие современные технологии.',
 
@@ -548,7 +548,7 @@ export const translations = {
       s5f2: 'Добавление новых функций',
       s5f3: 'Мониторинг сервера',
       s5f4: 'Резервное копирование (backup)',
-      s5f5: 'Связь 24/7',
+      s5f5: 'Связь с 07:00 до 22:00',
       s5Duration: 'По договорённости',
       s5Price: '500 000 сум / мес',
 
@@ -626,7 +626,7 @@ export const translations = {
       partner2Title: 'Сроки согласуются',
       partner2Desc: 'Сроки проекта согласуются в начале, каждый этап контролируется отдельно.',
       partner3Title: '1 месяц бесплатной поддержки',
-      partner3Desc: 'После сдачи проекта предоставляем 1 месяц бесплатной технической поддержки.',
+      partner3Desc: 'После сдачи проекта предоставляем 1 месяц бесплатной технической поддержки (с 07:00 до 22:00).',
     },
 
     order: {
@@ -834,8 +834,8 @@ export const translations = {
       why2Desc: 'Quality results delivered in short timeframes',
       why3Title: 'Clean Code',
       why3Desc: 'Clean code that meets modern standards',
-      why4Title: '24/7 Support',
-      why4Desc: 'Ongoing support even after project delivery',
+      why4Title: '07:00 — 22:00 Support',
+      why4Desc: 'Support from 07:00 to 22:00 even after project delivery',
 
       faqTitle: 'Frequently Asked Questions',
       faq1Q: 'How long does a project take?',
@@ -843,7 +843,7 @@ export const translations = {
       faq2Q: 'How is payment handled?',
       faq2A: '30% upfront, the remaining balance after delivery. Milestone-based payments are also available.',
       faq3Q: 'Is there support after project delivery?',
-      faq3A: 'Yes, every project includes 1 month of free technical support. After that, we continue at an agreed-upon rate.',
+      faq3A: 'Yes, every project includes 1 month of free technical support (07:00 to 22:00). After that, we continue at an agreed-upon rate.',
       faq4Q: 'What technologies do you use?',
       faq4A: 'React, Next.js, Node.js, Python, PostgreSQL, MongoDB, Aiogram, OpenAI, and other modern technologies.',
 
@@ -903,7 +903,7 @@ export const translations = {
       s5f2: 'Adding new features',
       s5f3: 'Server monitoring',
       s5f4: 'Backup',
-      s5f5: '24/7 communication',
+      s5f5: '07:00 to 22:00 communication',
       s5Duration: 'Negotiable',
       s5Price: '500,000 UZS / month',
 
@@ -981,7 +981,7 @@ export const translations = {
       partner2Title: 'Timeline by Agreement',
       partner2Desc: 'Project timeline is agreed upon upfront and each milestone is monitored separately.',
       partner3Title: '1 Month Free Support',
-      partner3Desc: 'We provide 1 month of free technical support after project delivery.',
+      partner3Desc: 'We provide 1 month of free technical support after project delivery (07:00 to 22:00).',
     },
 
     order: {
