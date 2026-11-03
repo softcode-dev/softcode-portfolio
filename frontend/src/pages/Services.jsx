@@ -172,7 +172,7 @@ function Services() {
         </div>
 
         <div className="card-actions justify-end relative z-10">
-          <Link to="/buyurtma" className="btn btn-primary">
+          <Link to="/aloqa" className="btn btn-primary">
             {t('services.orderButton')}
           </Link>
         </div>

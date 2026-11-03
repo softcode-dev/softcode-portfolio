@@ -166,7 +166,7 @@ function Navbar() {
 
           {/* CTA Button */}
           <Link
-            to="/buyurtma"
+            to="/aloqa"
             className="inline-flex min-h-10 items-center gap-2.5 rounded-full border border-primary/50 bg-primary/10 px-4 text-xs font-semibold text-base-content transition-all hover:scale-105 hover:bg-primary hover:text-white"
           >
             {t('nav.startProject')} <ArrowRight size={15} aria-hidden="true" />
@@ -261,7 +261,7 @@ function Navbar() {
             </div>
 
             <Link
-              to="/buyurtma"
+              to="/aloqa"
               onClick={() => setMobileOpen(false)}
               className="btn btn-primary mt-3 w-full"
             >

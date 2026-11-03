@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -8,7 +8,6 @@ import Projects from './pages/Projects'
 import Team from './pages/Team'
 import Profile from './pages/Profile'
 import Contact from './pages/Contact'
-import Order from './pages/Order'
 import { NotFound, PageErrorBoundary, ServerError } from './pages/ErrorPage'
 import { useLanguage } from './i18n/LanguageContext'
 
@@ -58,7 +57,7 @@ function App() {
               <Route path="/jamoa" element={<Team />} />
               <Route path="/profil/:id" element={<Profile />} />
               <Route path="/aloqa" element={<Contact />} />
-              <Route path="/buyurtma" element={<Order />} />
+              <Route path="/buyurtma" element={<Navigate to="/aloqa" replace />} />
               <Route path="/500" element={<ServerError />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

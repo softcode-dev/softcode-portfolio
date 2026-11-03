@@ -47,7 +47,7 @@ function Home() {
               {t('home.heroCopy')}
             </p>
             <div className="hero-actions flex flex-wrap gap-4">
-              <Link to="/buyurtma" className="home-cta-primary inline-flex min-h-14 items-center gap-4 rounded-full bg-white px-8 font-semibold text-slate-950">
+              <Link to="/aloqa" className="home-cta-primary inline-flex min-h-14 items-center gap-4 rounded-full bg-white px-8 font-semibold text-slate-950">
                 {t('home.ctaStart')} <ArrowRight size={19} aria-hidden="true" />
               </Link>
               <Link to="/xizmatlar" className="home-cta-secondary inline-flex min-h-14 items-center gap-3 rounded-full border border-white/45 bg-slate-950/25 px-8 font-medium text-white backdrop-blur-sm">
@@ -275,7 +275,7 @@ function Home() {
           <p className="text-base-content/70 mb-8 text-lg">
             {t('home.ctaSubtitle')}
           </p>
-          <Link to="/buyurtma" className="btn btn-primary btn-lg shadow-md">
+          <Link to="/aloqa" className="btn btn-primary btn-lg shadow-md">
             <Rocket size={22} /> {t('home.ctaButton')}
           </Link>
         </div>

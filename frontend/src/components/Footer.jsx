@@ -43,8 +43,8 @@ function Footer() {
           <a href="https://t.me/softcode_dev" target="_blank" rel="noreferrer" className="contact-link flex items-center gap-2 text-base-content/70 hover:text-primary transition-colors">
             <Send size={16} /> Telegram <ArrowUpRight size={13} />
           </a>
-          <a href="tel:+998901234567" className="contact-link flex items-center gap-2 text-base-content/70 hover:text-primary transition-colors">
-            <Phone size={16} /> +998 90 123 45 67
+          <a href="tel:+998933849350" className="contact-link flex items-center gap-2 text-base-content/70 hover:text-primary transition-colors">
+            <Phone size={16} /> +998 93 384 93 50
           </a>
           <a href="mailto:info@softcode.uz" className="contact-link flex items-center gap-2 text-base-content/70 hover:text-primary transition-colors">
             <Mail size={16} /> info@softcode.uz
@@ -55,7 +55,7 @@ function Footer() {
       <div className="border-t border-base-300">
         <div className="site-container flex flex-col gap-3 py-5 text-xs text-base-content/60 sm:flex-row sm:items-center sm:justify-between">
           <p>{t('footer.copyright')}</p>
-          <Link to="/buyurtma" className="hover:text-primary transition-colors flex items-center gap-1">
+          <Link to="/aloqa" className="hover:text-primary transition-colors flex items-center gap-1">
             {t('footer.discussProject')} <ArrowUpRight size={13} />
           </Link>
         </div>
